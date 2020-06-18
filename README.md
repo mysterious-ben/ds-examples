@@ -4,9 +4,10 @@ Notebooks and code snipptets for testing various Data Science concepts.
 
 ## Folders
 
-- `/equations` (solving math equations)
+- `/ctypes` (efficient computations using C)
+- `/equations` (math formulae and equations)
 - `/interviewkit` (useful code snippets and examples)
-- `/jax` (efficient computation and probabilistic modelling)
+- `/jax` (efficient computations and probabilistic modelling)
 - `/plotly` (interactive plotting)
 - `/unsupervised` (embeddings and clustering)
 
