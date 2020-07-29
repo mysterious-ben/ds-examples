@@ -4,3 +4,8 @@ data/
 *.zip
 *.db
 *.html
+
+nohup.out
+plot_temp/
+*.so
+
