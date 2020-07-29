@@ -1,0 +1,10 @@
+dm_haiku==0.0.1
+tabulate==0.8.7
+matplotlib==3.2.1
+jax==0.1.73
+numpy==1.18.4
+tensorflow==2.2.0
+pandas==1.0.4
+torch==1.5.1
+haiku==0.01
+scikit_learn==0.23.1
