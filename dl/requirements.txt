@@ -1,10 +1,11 @@
-dm_haiku==0.0.1
-tabulate==0.8.7
+torchvision==0.6.1
+lightgbm==2.3.1
+tensorflow==2.3.0
 matplotlib==3.2.1
-jax==0.1.73
+tabulate==0.8.7
+dm_haiku==0.0.1
 numpy==1.18.4
-tensorflow==2.2.0
 pandas==1.0.4
-torch==1.5.1
+jax==0.1.73
 haiku==0.01
-scikit_learn==0.23.1
+scikit_learn==0.23.2
