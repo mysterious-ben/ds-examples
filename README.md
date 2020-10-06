@@ -4,7 +4,8 @@ Notebooks and code snipptets for testing various Data Science concepts.
 
 ## Folders
 
-- `/ctypes` (efficient computations using C)
+- `/ctypes` (efficient computations using C/C++)
+- `/dataflows` (data and model pipelines)
 - `/dl` (deep learning)
 - `/equations` (math formulae and equations)
 - `/interviewkit` (useful code snippets and examples)
