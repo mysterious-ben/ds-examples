@@ -1,11 +1,13 @@
-torchvision==0.6.1
 lightgbm==2.3.1
-tensorflow==2.3.0
-matplotlib==3.2.1
+pandas==1.0.4
 tabulate==0.8.7
+tensorflow==2.3.1
+torch==1.5.1
+torchvision==0.6.1
+cloudpickle==1.6.0
+matplotlib==3.2.1
 dm_haiku==0.0.1
 numpy==1.18.4
-pandas==1.0.4
 jax==0.1.73
 haiku==0.01
 scikit_learn==0.23.2
