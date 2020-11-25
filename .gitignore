@@ -3,6 +3,7 @@
 __pycache__/
 data/
 cache/
+mlruns/
 dask-worker-space/
 *.zip
 *.pickle
