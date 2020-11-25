@@ -1,5 +1,6 @@
 .ipynb_checkpoints/
 .idea/
+__pycache__/
 data/
 cache/
 dask-worker-space/
