@@ -1,6 +1,8 @@
-loguru==0.5.0
-numpy==1.18.4
+dutil==0.2.17
 prefect==0.13.9
-dask==2.29.0
-dutil==0.2.6
+numpy==1.18.4
+loguru==0.5.0
 pandas==1.0.4
+dask==2.29.0
+mlflow==1.11.0
+scikit_learn==0.23.2
