@@ -37,14 +37,16 @@ def load_data_3():
 
 
 @dpipe.delayed_cached(name_prefix='mlpipe_', nout=2)
-def make_x_y(df_1, df_2, df_3, include_c, adjust_for_country, target, fversion):
+def make_x_y(df_1, df_2, df_3, include_country, adjust_for_country, target, fversion):
     assert fversion is not None
     sleep(1)
     df = pd.concat((df_1, df_2, df_3), axis=1)
     if adjust_for_country:
         df['b'] = df['b'] + 2 * (df['c'] == 'au')
-    if not include_c:
+    if not include_country:
         df = df.drop(columns=['c'])
+    else:
+        df['c'] = df['c'].map({'us': 0, 'eu': 1, 'au': 2})
     y = df[target]
     X = df.drop(columns=[target])
     return X, y
@@ -59,7 +61,7 @@ def split_x_y(X, y, test_ratio):
 
 
 @dpipe.delayed_cached(name_prefix='mlpipe_', nout=2)
-def crossval_model(model_name, model, X, y, n_folds, mversion, n_jobs=1):
+def crossval_model(model_name, _model, X, y, n_folds, mversion, n_jobs=1):
     assert model_name is not None
     assert mversion is not None
     cv = KFold(n_folds)
@@ -68,13 +70,13 @@ def crossval_model(model_name, model, X, y, n_folds, mversion, n_jobs=1):
         'r2': make_scorer(r2_score),
     }
     results = cross_validate(
-        model, X, y,
+        _model, X, y,
         scoring=scores,
         cv=cv,
         return_train_score=True,
         n_jobs=n_jobs,
     )
-    model.fit(X, y)
+    _model.fit(X, y)
 
     mlflow.set_experiment('mlpipe_')
     with mlflow.start_run():
@@ -85,14 +87,14 @@ def crossval_model(model_name, model, X, y, n_folds, mversion, n_jobs=1):
                 metrics[k] = v.mean()
         mlflow.log_metrics(metrics)
     
-    return model, results
+    return _model, results
 
 
 params = dpipe.DelayedParameters()
 params.create_many(dict(
     fversion=None,
     mversion=None,
-    include_c=None,
+    include_country=None,
     adjust_for_country=None,
     target=None,
     test_ratio=None,
@@ -108,7 +110,7 @@ X, y = make_x_y(
     df_1=data_1,
     df_2=data_2,
     df_3=data_3,
-    include_c=params.get_delayed('include_c'),
+    include_country=params.get_delayed('include_country'),
     adjust_for_country=params.get_delayed('adjust_for_country'),
     target=params.get_delayed('target'),
     fversion=params.get_delayed('fversion'),
@@ -120,7 +122,7 @@ X_train, X_test, y_train, y_test = split_x_y(
 )
 cv_model, cv_results = crossval_model(
     model_name=params.get_delayed('model_name'),
-    model=params.get_delayed('_model'),
+    _model=params.get_delayed('_model'),
     X=X_train,
     y=y_train,
     n_folds=params.get_delayed('n_folds'),
