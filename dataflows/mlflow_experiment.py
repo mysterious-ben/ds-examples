@@ -1,3 +1,6 @@
+"""
+Pipeline for the notebook `mlflow_experiment.ipynb`
+"""
 
 from time import sleep
 import numpy as np
@@ -17,6 +20,8 @@ import mlflow.sklearn
 # MLFlow throws user warnings in Jupyter
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
+
+# --- Pipeline steps ---
 
 @dpipe.delayed_cached()
 def load_data_1():
@@ -90,6 +95,8 @@ def crossval_model(model_name, _model, X, y, n_folds, mversion, n_jobs=1):
     return _model, results
 
 
+# --- Pipeline parameters ---
+
 params = dpipe.DelayedParameters()
 params.create_many(dict(
     fversion=None,
@@ -103,6 +110,10 @@ params.create_many(dict(
     _model=None,
     _n_jobs=1,
 ))
+
+
+# --- Pipeline ---
+
 data_1 = load_data_1()
 data_2 = load_data_2()
 data_3 = load_data_3()
@@ -132,6 +143,10 @@ cv_model, cv_results = crossval_model(
 
 
 def run_experiment(save_model_mlflow_dir=None):
+    """Run experiment pipeline
+    
+    Configure pipeline parameters via dpipe.delayed_context
+    """
     cv_model_, cv_results_ = dpipe.delayed_compute((cv_model, cv_results))
     if save_model_mlflow_dir is not None:
         mlflow.sklearn.save_model(cv_model_, Path('model') / save_model_mlflow_dir)
