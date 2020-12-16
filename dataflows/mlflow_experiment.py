@@ -21,6 +21,11 @@ import mlflow.sklearn
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 
+PREFIX = 'mlpipe_'
+# MLFLOW_DIR = "file:///mlruns"  # save experiments as files (relative path)
+MLFLOW_DIR = "sqlite:///mlruns.db"  # save experiments in a sqlite db (relative path)
+
+
 # --- Pipeline steps ---
 
 @dpipe.delayed_cached()
@@ -41,7 +46,7 @@ def load_data_3():
     return pd.DataFrame({'d': [-1., -1., np.nan, -3., -1.], 'e': [0, 1, -2., 0, 0]})
 
 
-@dpipe.delayed_cached(name_prefix='mlpipe_', nout=2)
+@dpipe.delayed_cached(name_prefix=PREFIX, nout=2)
 def make_x_y(df_1, df_2, df_3, include_country, adjust_for_country, target, fversion):
     assert fversion is not None
     sleep(1)
@@ -57,7 +62,7 @@ def make_x_y(df_1, df_2, df_3, include_country, adjust_for_country, target, fver
     return X, y
 
 
-@dpipe.delayed_cached(name_prefix='mlpipe_', nout=4)
+@dpipe.delayed_cached(name_prefix=PREFIX, nout=4)
 def split_x_y(X, y, test_ratio):
     assert len(X) == len(y)
     assert 0 < test_ratio < 1.
@@ -65,7 +70,7 @@ def split_x_y(X, y, test_ratio):
     return X[:-n_test], X[-n_test:], y[:-n_test], y[-n_test:]
 
 
-@dpipe.delayed_cached(name_prefix='mlpipe_', nout=2)
+@dpipe.delayed_cached(name_prefix=PREFIX, nout=2)
 def crossval_model(model_name, _model, X, y, n_folds, mversion, n_jobs=1):
     assert model_name is not None
     assert mversion is not None
@@ -83,7 +88,8 @@ def crossval_model(model_name, _model, X, y, n_folds, mversion, n_jobs=1):
     )
     _model.fit(X, y)
 
-    mlflow.set_experiment('mlpipe_')
+    mlflow.set_tracking_uri(MLFLOW_DIR)
+    mlflow.set_experiment(PREFIX)
     with mlflow.start_run():
         mlflow.log_params(params.get_params())
         metrics = {}

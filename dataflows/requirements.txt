@@ -1,11 +1,12 @@
-mlflow==1.11.0
-pandas==1.1.4
-prefect==0.13.9
 sklearn_pandas==2.0.3
 loguru==0.5.0
-papermill==2.2.2
-dutil==0.2.18
+mlflow==1.11.0
+dutil==0.2.19
 tqdm==4.46.0
+pandas==1.1.4
 numpy==1.18.4
+papermill==2.2.2
 dask==2.29.0
+prefect==0.13.9
+mlutil==0.1.10
 scikit_learn==0.23.2
