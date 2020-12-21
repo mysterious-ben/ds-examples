@@ -9,6 +9,7 @@ Notebooks and code snipptets for testing various Data Science concepts.
 - `/dl` (deep learning)
 - `/equations` (math formulae and equations)
 - `/interviewkit` (useful code snippets and examples)
+- `/models` (ML modelling and function interpolation)
 - `/jax` (efficient computations and probabilistic modelling)
 - `/plotly` (interactive plotting)
 - `/unsupervised` (embeddings and clustering)
