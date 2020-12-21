@@ -1,0 +1,6 @@
+numpy==1.18.4
+mlutil==0.1.10
+csaps==1.0.2
+matplotlib==3.2.1
+pygam==0.8.0
+scikit_learn==0.23.2
