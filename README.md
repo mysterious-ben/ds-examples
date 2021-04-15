@@ -13,6 +13,7 @@ Notebooks and code snipptets for testing various Data Science concepts.
 - `/models` (ML modelling and function interpolation)
 - `/jax` (efficient computations and probabilistic modelling)
 - `/plotly` (interactive plotting)
+- `/timescaledb` (time series SQL with TimescaleDB)
 - `/unsupervised` (embeddings and clustering)
 
 ## Installation
