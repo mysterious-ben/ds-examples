@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2.extras import execute_values
+import datetime as dt
 
 CONNECTION = "postgres://postgres:password@localhost:5432/postgres"
 
@@ -34,10 +35,12 @@ if __name__ == "__main__":
         records = [
             ("2016-06-22 19:10:27-00", 4, "temperature", 23.3),
             ("2016-06-22 19:11:23-00", 5, "temperature", 23.4),
-            ("2016-06-22 19:16:02-00", 9, "pressue", 1029.3),
+            ("2016-06-22 19:16:02-00", 9, "pressure", 1029.3),
             ("2016-06-22 19:21:43-00", 10, "temperature", 23.6),
             ("2016-06-22 19:33:01-00", 11, "temperature", 24.0),
             ("2016-06-22 19:34:53-00", 12, "temperature", 25.0),
+            (dt.datetime(2016, 6, 22, 19, 40, 17, tzinfo=dt.timezone.utc), 14, "pressure", 1023.3),
+            (dt.datetime(2016, 6, 22, 19, 41, 0, tzinfo=dt.timezone.utc), 15, "pressure", 1041.6),
         ]
         execute_values(
             c,
