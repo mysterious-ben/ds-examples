@@ -10,6 +10,7 @@ Notebooks and code snipptets for testing various Data Science concepts.
 - `/equations` (math formulae and equations)
 - `/events` (event-based programs)
 - `/interviewkit` (useful code snippets and examples)
+- `/mldesign` (ML experiment principles and mistakes)
 - `/models` (ML modelling and function interpolation)
 - `/jax` (efficient computations and probabilistic modelling)
 - `/plotly` (interactive plotting)
