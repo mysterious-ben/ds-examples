@@ -1,7 +1,7 @@
 scikit_optimize==0.7.4
 shap==0.34.0
 statsmodels==0.10.1
-numpy==1.16.5
+numpy==1.22.0
 plotly==4.5.2
 scipy==1.4.1
 cloudpickle==1.2.2
