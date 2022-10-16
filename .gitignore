@@ -11,6 +11,8 @@ dask-worker-space/
 *.parquet
 *.db
 *.html
+.venv
+.env
 
 nohup.out
 plot_temp/

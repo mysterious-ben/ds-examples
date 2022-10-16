@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "interviewkit"
+version = "0.1.0"
+description = "Tools to ace an DS inteview"
+authors = ["Mysterious Ben <datascience@tuta.io>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+ipykernel = "^6.16.0"
+scikit-optimize = "^0.9.0"
+scikit-learn = "^1.1.2"
+statsmodels = "^0.13.2"
+numpy = "^1.23.4"
+pandas = "^1.5.0"
+plotly = "^5.10.0"
+scipy = "^1.9.2"
+cloudpickle = "^2.2.0"
+matplotlib = "^3.6.1"
+lightgbm = "^3.3.3"
+loguru = "^0.6.0"
+shap = "^0.41.0"
+pytorch-tabnet = "^4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyterlab = "^3.4.8"
+ipywidgets = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
