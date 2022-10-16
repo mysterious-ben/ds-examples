@@ -7,7 +7,7 @@ torchvision==0.6.1
 cloudpickle==1.6.0
 matplotlib==3.2.1
 dm_haiku==0.0.1
-numpy==1.18.4
+numpy==1.22.0
 jax==0.1.73
 haiku==0.01
 scikit_learn==0.23.2
