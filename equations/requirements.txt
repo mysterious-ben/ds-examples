@@ -3,4 +3,4 @@ scipy==1.4.1
 jax==0.1.68
 matplotlib==3.2.1
 sympy==1.6
-numpy==1.18.4
+numpy==1.22.0
