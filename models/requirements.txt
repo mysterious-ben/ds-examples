@@ -1,4 +1,4 @@
-numpy==1.18.4
+numpy==1.22.0
 mlutil==0.1.10
 csaps==1.0.2
 matplotlib==3.2.1
