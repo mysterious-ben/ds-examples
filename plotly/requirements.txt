@@ -1,2 +1,2 @@
 plotly==4.8.1
-ipython==7.15.0
+ipython==8.10.0
